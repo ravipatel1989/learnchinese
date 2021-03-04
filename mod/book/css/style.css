@@ -1,0 +1,370 @@
+a{
+    cursor: pointer;
+}
+.align-right{
+    text-align: right;
+}
+.align-center{
+    text-align: center;
+}
+.tooltipcustom {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  cursor: pointer;
+}
+
+.tooltipcustom .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 3px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltipcustom .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltipcustom:hover .tooltiptext {
+  visibility: visible;
+}
+.msgdiv{
+    position: fixed;
+    top: 0;
+    display: block;
+    z-index: 1030;
+    width: 100%;
+    text-align: center;
+    left: 0;
+}
+#radicalTbl{
+    display: block;
+    overflow-x: scroll;
+}
+#radicalTbl_length, #radicalTbl_filter, #hsklevelwords_filter{ display: none;}
+
+.wordrecord .chinesecharacter{
+    display: block;
+    text-align: center;
+}
+
+.wordrecord .chinesecharacter .innerdiv{
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 10px 15px;
+}
+
+.wordrecord .chinesecharacter .innerdiv h1{
+    font-size: 4.5rem;
+}
+
+.wordrecord .subdiv{
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+.wordrecord .subdiv h2{
+    background: #fff;
+    font-size: 24px;
+    color: #0056b3;
+    display: inline-block;
+    position: relative;
+    padding: 0 13px;
+    bottom: 32px;
+    z-index: 1;
+}
+.wordrecord .description ul li span{
+    color: #0056b3;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.wordrecord .description h4{
+    color:#0056b3;
+    font-size: 20px;
+}
+.wordrecord .description ul{
+    list-style-position: inside;
+}
+/*
+** Start script for drag word in sentence 
+*/
+#chinesechardrag { width: 6%; height: 40px; padding: 0.5em; margin: 20px 20px 20px 10px; cursor: move; z-index: 2;}
+.droppable{width: 10%;}
+.droppable, .info { padding: 0.5em; margin: 10px; height: 60px; line-height: 40px; text-align: center; }
+.droppable.more{ border-radius: 50px; border: 1px solid #888;}
+.info{
+    width: 16%; display: inline-block; margin-right: 0;
+}
+.info h6{
+    line-height: 40px;
+    font-size: 16px;
+}
+
+.dragword ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin: 5px;
+    padding: 5px;
+}
+
+.dragword ul li {
+    float: left;
+}
+.dragword li.ui-state-default, .dragword li.ui-state-highlight{
+    margin: 5px;
+    padding: 5px;
+}
+.dragword ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+/*
+** End script for drag word in sentence 
+*/
+
+#sentencewithpinyin{
+    margin: 0 15px;
+}
+#sentencewithpinyin p{
+    border: 1px solid #c5c5c5;
+    padding: 5px;
+}
+
+/*------------------------- code for flashcard flip --------------------------*/
+
+.flip-box {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  -webkit-animation-fill-mode: both;
+-webkit-transform:translate3d(0,0,0);
+-webkit-perspective: 1000;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+/*.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}*/
+
+/* Position the front and back side */
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+   -webkit-backface-visibility: hidden;
+  -webkit-animation-fill-mode: both;
+    -webkit-transform:translate3d(0,0,0);
+    -webkit-perspective: 1000;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+    line-height: 200px;
+    height: 200px;
+    text-align: center;
+    background-color: #bbb;
+    color: black;
+    border: 1px solid #a6a6a6;
+}
+
+.flip-box-front audio{
+    margin-top: 75px;
+}
+/* Style the back side */
+.flip-box-back {
+    line-height: 200px;
+    height: 200px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-box-front p, .flip-box-back p{
+    font-size: 50px;
+}
+.flip-box-front.normalfront p, .flip-box-back.normalback p{
+    line-height: 1.5;
+    vertical-align: middle;
+    margin-top: 0;
+    font-size: initial;
+}
+.flip-box-front.normalfront p.chinesechar, .flip-box-back.normalback p.chinesechar{
+    font-size: 40px;
+    margin: 50px 0 0 0;
+}
+.flashcardanswer{
+    width: 65% !important;
+    display: inline-block;
+}
+.correctanswer, .wronganswer{
+    display: none;
+    text-align: center;
+}
+.correctanswer span, .wronganswer span{
+    font-size: 30px;
+    font-weight: bold;
+}
+.correctanswer span{
+    color: green;
+}
+.wronganswer span{
+    color: red;
+}
+/*----------------------- End code for flashcard flip ------------------------*/
+
+/*----------------------- Flashcard slideshow code ---------------------------*/
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  min-height: 250px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+#flashcard .prev, #flashcard .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  
+}
+
+/* Position the "next button" to the right */
+#flashcard .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fadeslide {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.totalscore{
+    text-align: center;
+    margin-top: 50px;
+    display: block;
+}
+.totalscore h3{
+    color: #666;
+}
+.totalscore h3 span{
+    color: #007bff;
+}
+/*--------------------- End of flashcard slideshow ---------------------------*/
+
+.audiocharacter.activeele{
+    font-size: 40px;
+}
+
+#pinyinModal .modal-title{
+    width: 100%;
+    text-align: center;
+}
